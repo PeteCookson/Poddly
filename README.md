@@ -1,31 +1,31 @@
 
 # **PODDLY**
-## The Free Podcast Directory
+## The Community Podcast Directory
 
 This website is designed and created for the Data Centric Development Milestone Project, for Code Institute's Diploma in Web Application Development.
 
-Poddly - The Free Podcast Directory is an online podcast sharing platform, where podcast lovers from around the world can share their favourites, and expand their own collection of podcasts with new discoveries shared by the Poddly community.
+Poddly - The Community Podcast Directory is a free to use online podcast sharing platform, where podcast lovers from around the world can share their favourites, and expand their own library of podcasts with new discoveries shared by the Poddly Community Directory.
 
-The platform will allow users to browse a complete list of shared podcasts, search by Category, Channels or Name, leave comments, and even give podcasts a thumbs up.
+The platform will allow users to browse a complete directory of shared podcasts, search by Category, Channels or Name, leave comments, and even give podcasts a thumbs up.
 
 ## **Table of Contents**
 
 * [UX](#UX)
-    * [Strategy](#Strategy)
-        * [Site Owner Goals](#Site-Owner-Goals)
-        * [External User Goals](#External-User-Goals)
-        * [Returning User Goals](#Returning-User-Goals)
-    * [Scope](#Scope)
-    * [Structure](#Structure)
-        * [Database](#Database)
-    * [Skeleton](#Skeleton)
-        * [Wireframes](#Wireframes)
-    * [Surface](#Surface)
-        * [Colour Palette](#Colour-Palette)
-        * [Typography](#Typography)
-        * [Icons](#Icons)
-        * [Images](#Images)
-* [Technologies Used](#Technologies-Used)
+    * [Strategy](#strategy)
+        * [Site Owner Goals](#site-owner-goals)
+        * [External User Goals](#external-user-goals)
+        * [Returning User Goals](#returning-user-goals)
+    * [Scope](#scope)
+    * [Structure](#structure)
+        * [Database](#database)
+    * [Skeleton](#skeleton)
+        * [Wireframes](#wireframes)
+    * [Surface](#surface)
+        * [Colour Palette](#colour-palette)
+        * [Typography](#typography)
+        * [Icons](#icons)
+        * [Images](#images)
+* [Technologies Used](#technologies-used)
 
 
 
@@ -128,7 +128,7 @@ The structure of each page to be used on the website is listed below.
     - Search Form - Searching by name or browse by category or channel dropdown.
     - Cards displaying podcasts - All podcasts added by users will be shown on the page.
     - Modal window - Users can find out more about individual podcasts by clicking on the cards, which will trigger a modal window showing more information about the selected podcast. Users will be able to 'like' and comment on the podcast.
-    - Footer - Social Media/Spotify/Github Links will be displayed at the bottom level of the Home Page.
+    - Footer - Social Media Links will be displayed at the bottom of the Home Page.
 
 2. Login Page - As well as being able to login directly from the home page, users will also be able to visit a dedicated Login Page.
     - Navigation Bar
@@ -178,6 +178,26 @@ The noSQL database MongoDB Atlas will be used to handle all the data in the Podd
 
 The website uses the Google Fonts library to provide the fonts:
 
-* Dosis ExtraBold 800 - Used for the website's logo.
+* Dosis ExtraBold 800 - Used for the directory logo.
 
-* Lato Light 300 - Used for all other text content.
+![Logo](/readme_assets/Dosis.png)
+* Lato - Used for all other text content.
+
+![Text](/readme_assets/Lato.png)
+
+## **Technologies Used** 
+---
+### Languages
+
+*
+*
+*
+*
+### Database
+
+* [MongoDB](https://www.mongodb.com/)
+
+### Front-End Libraries
+
+* [MaterializeCSS](https://materializecss.com/)
+* [Google Fonts](https://fonts.google.com/)
