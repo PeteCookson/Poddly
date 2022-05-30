@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poddly</title>
+</head>
+
+<body>
+    {% for podcast in podcasts %}
+    {{ podcast.podcast_name }}<br>
+    {{ podcast.category_name}}<br>
+    {{ podcast.channel}}<br>
+    {{ podcast.podcast_description}}<br>
+    {{ podcast.added_by}}<br>
+    {{ podcast.date_added}}<br>
+    {% endfor %}
+</body>
+
+</html>
