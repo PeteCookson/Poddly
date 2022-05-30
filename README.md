@@ -26,6 +26,7 @@ The platform will allow users to browse a complete directory of shared podcasts,
         * [Icons](#icons)
         * [Images](#images)
 * [Technologies Used](#technologies-used)
+* [Bugs & Testing](#bugs-&-testing)
 
 
 
@@ -105,7 +106,7 @@ In order to complete the project in time for the deployment and submission deadl
 - Functionality for users to edit profile
 - Contact Page
 - 404 Page
-- Admin Priveleges (to manage Genres and Tracks)
+- Admin Priveleges (to manage Categories and Channels)
 
 Features for future releases:
 
@@ -189,10 +190,13 @@ The website uses the Google Fonts library to provide the fonts:
 ---
 ### Languages
 
-*
-*
-*
-*
+The primary languages used throughout the development of this project are:
+
+* [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Python3](https://www.python.org/downloads/)
+* [JavaScript](https://www.javascript.com/)
+
 ### Database
 
 * [MongoDB](https://www.mongodb.com/)
@@ -201,3 +205,28 @@ The website uses the Google Fonts library to provide the fonts:
 
 * [MaterializeCSS](https://materializecss.com/)
 * [Google Fonts](https://fonts.google.com/)
+* [FontAwesome](https://fontawesome.com/)
+
+### Back-End Libraries
+
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - The microservice Flask framework is used to handle routing and serving of HTML pages displaying front-end content.
+* [Flask-PyMongo](https://docs.mongodb.com/drivers/pymongo/) - Flask's extension 'Flask-PyMongo' is the language used to interact between Flask and the MongoDB database. It handles the data inputted through the website's forms and sends it to the database, as well as retrieving it from the database to be served onto the client's screen.
+* [Flask Mail](https://pythonhosted.org/Flask-Mail/) - The Flask Mail module is used to provide functionality to the website's Contact form, as well as sending emails to users who may need to reset their password.
+* [Flask Paginate](https://pythonhosted.org/Flask-paginate/) - Flask Paginate is used to provide pagination to the website's 'All Tracks' section, featured in the 'Browse Tracks' page.
+* [jQuery](https://jquery.com/) - The developer used fairly heavy use of jQuery's AJAX for certain features of the website, including the 'like' buttons and search side-bar in the 'Browse Tracks' page, as well as the functionality to remove liked tracks in the 'User Profile' page.
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) - The WSGI web-application library Werkzeug was used to generate hashed passwords, therefore providing password security for the client.
+
+### Other Technologies
+
+* [Google Chrome Devtools](https://developer.chrome.com/docs/devtools/)
+* [Real Favicon Generator](https://realfavicongenerator.net/)
+* [XD](https://www.adobe.com/uk/products/xd.html/) - Wireframes were made using Adobe XD software
+* [Random Keygen](https://randomkeygen.com/)
+
+## **Bugs & Testing**
+Bugs and Testing information can be found in the seperate [Bugs and Testing](bugs-and-testing.md) file.
+## Credits
+
+## Deployment
+
+## Acknowledgements
