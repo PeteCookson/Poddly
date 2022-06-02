@@ -7,21 +7,20 @@
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" id="log-in" href="#">Log In</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">Register</a>
-            </li>
+            </li>-->
         </ul>
     </div>
     <div class="card-body">
-
-        <form class="col s6 m6" method="POST" action="{{ url_for('register') }}">
+        <form class="col" method="POST" action="{{ url_for('register') }}">
             <h4 class="register center-align">Log In</h4>
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">
                     <div class="col">
                         <i class="fas fa-user-plus prefix"></i>
-                        <input id="username" name="username" type="text" class="validate">
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
@@ -29,15 +28,17 @@
                 <div class="row">
                     <div class="col">
                         <i class="fas fa-user-lock prefix"></i>
-                        <input id="password" name="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
-
-
             </div>
+            <button type="submit" class="btn btn-primary">
+                Register <i class="fas fa-sign-in-alt"></i>
+            </button>
         </form>
-        <a href="#" class="btn btn-primary">Log In <i class="fas fa-sign-in-alt"></i></a>
+
+        <!--<a href="#" class="btn btn-primary">Log In <i class="fas fa-sign-in-alt"></i></a>-->
     </div>
 </div>
 {% endblock %}
