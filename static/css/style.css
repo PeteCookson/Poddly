@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Lato:wght@300;400&display=swap');
 
-* {
+/** {
     font-size: 10px;
-}
+}*/
 
 body {
     font-family: "Lato", sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 a {
@@ -18,12 +18,35 @@ a {
     padding-left: 2rem;
 }
 
+
 .flashes h4 {
     line-height: 2;
 }
 
+.alert {
+    font-size: 1.4rem;
+    position: fixed;
+    top: 200px;
+    left: 25%;
+    width: 50%;
+    z-index: 7000;
+    color: white;
+    background-color: #e5989b80;
+    border: none;
+}
+
+.submit-btn {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-color: black;
+    border-radius: 6px;
+}
+
+.main-container
+
 /*--------------------------------------------Media Queries*/
 @media screen and (min-width: 768px) {
+
     .card {
         width: 50%;
     }
