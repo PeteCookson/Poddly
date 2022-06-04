@@ -105,7 +105,9 @@ def logout():
 
 @app.route("/add_podcast")
 def add_podcast():
-    return render_template("add_podcast.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    channels = mongo.db.channels.find().sort("channel", 1)
+    return render_template("add_podcast.html", categories=categories, channels=channels)
 
 
 if __name__ == "__main__":

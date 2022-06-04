@@ -6,7 +6,17 @@
     <div class="mb-3">
         <i class="fas fa-pencil-alt prefix"></i>
         <label for="podcast_name"></label>
-        <input type="text" class="validate" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Name of the Podcast" required>
+        <input type="text" class="validate" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast" required>
+    </div>
+    <div class="input-group mb-3">
+        <i class="fas fa-folder-open prefix"></i>
+        <label for="category_name"></label>
+        <select class="form-select validate" id="category_name" name="category_name" required>
+            <option selected>Select the Category...</option>
+            {% for category in categories %}
+            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+            {% endfor %}
+        </select>
     </div>
     <div class="mb-3">
         <i class="fas fa-align-left prefix"></i>
@@ -14,29 +24,18 @@
         <textarea type="text" class="validate" id="podcast_description" name="podcast_description" placeholder="Podcast Description"></textarea>
     </div>
     <div class="input-group mb-3">
-        <select class="form-select" id="channel" name="channel">
+        <select class="form-select" id="channel" name="channel" required>
             <option selected>Select the Channel...</option>
-            <option value="1">Wondery</option>
-            <option value="2">Tortoise</option>
+            {% for channel in channels %}
+            <option value="{{ channel.channel }}">{{ channel.channel }}</option>
+            {% endfor %}
+            <!--<option value="2">Tortoise</option>
             <option value="3">The New York Times</option>
             <option value="4">iHeartPodcast Network</option>
             <option value="5">NPR</option>
             <option value="6">Somethin' Else</option>
             <option value="7">BBC</option>
-            <option value="8">The Telegraph</option>
-        </select>
-    </div>
-    <div class="input-group mb-3">
-        <select class="form-select" id="category" name="category">
-            <option selected>Select the Category...</option>
-            <option value="1">Comedy</option>
-            <option value="2">Sports</option>
-            <option value="3">Society & Culture</option>
-            <option value="4">News</option>
-            <option value="5">Arts</option>
-            <option value="6">Hstory</option>
-            <option value="7">Health & Fitness</option>
-            <option value="8">True Crime</option>
+            <option value="8">The Telegraph</option>-->
         </select>
     </div>
     <div>
