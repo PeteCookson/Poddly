@@ -103,6 +103,11 @@ def logout():
     session.pop("user")
     return redirect(url_for("get_podcasts"))
 
+@app.route("/add_podcast")
+def add_podcast():
+    return render_template("add_podcast.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
