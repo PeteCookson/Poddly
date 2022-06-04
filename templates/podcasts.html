@@ -1,14 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<div row>
     {% for podcast in podcasts %}
-    {{ podcast.podcast_name }}<br>
-    {{ podcast.category_name}}<br>
-    {{ podcast.channel}}<br>
-    {{ podcast.podcast_description}}<br>
-    {{ podcast.added_by}}<br>
-    {{ podcast.date_added}}<br>
+    <!-- podcast image -->
+    <div col class="card col-md-3">
+        <div class="front">
+            <img src="{{ podcast.cover }}" class="card-img-top" alt="{{ podcast.podcast_name }} cover">
+
+            <div class="card-body">
+                <!-- podcast -->
+                <h5 class="card-title">{{ podcast.podcast_name }}</h5>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <!-- category -->
+                <li class="list-group-item">{{ podcast.category_name }}</li>
+                <!-- channel -->
+                <li class="list-group-item">from {{ podcast.channel }}</li>
+                <!-- added by -->
+                <!-- date added-->
+                <li class="list-group-item">Added by {{ podcast.added_by }} on {{ podcast.date_added }}</li>
+                <!-- streaming service -->
+                <li class="list-group-item">Available on {{ podcast.streaming_service }}</li>
+            </ul>
+        </div>
+        <div class="back">
+            <!-- podcast descrption-->
+            <p class="card-text content">{{ podcast.podcast_description }}</p>
+            <!-- comments -->
+            <li class="list-group-item">"{{ podcast.comments }}"{{ podcast.comment_by }}</li>
+        </div>
+    </div>
     {% endfor %}
+</div>
 
 {% endblock %}
