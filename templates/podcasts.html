@@ -2,9 +2,9 @@
 {% block content %}
 
 <div row>
-     <div col class="card col-md-3">
+    <div col class="col-md-3 ">
         {% for podcast in podcasts %}
-        <div class="front">
+        <div class="card front">
             <!-- podcast image -->
             <img src="{{ podcast.cover }}" class="card-img-top" alt="{{ podcast.podcast_name }} cover">
             <div class="card-body">
@@ -22,7 +22,7 @@
                 <li class="list-group-item">Available on {{ podcast.streaming_service }}</li>
             </ul>
         </div>
-        <div class="back">
+        <div class="card back">
             <!-- podcast descrption-->
             <p class="card-text content">{{ podcast.podcast_description }}</p>
             <!-- comments -->

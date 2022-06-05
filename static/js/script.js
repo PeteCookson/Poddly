@@ -11,4 +11,12 @@ $(document).ready(function() {
     $(document).ready(function() {
         $('[data-bs-toggle="tooltip"]').tooltip();
     });
+    // validate dropdown
+    /*    $("#category_name").validate({
+            messages: {
+                category_name: {
+                    required: "Please select an option from the list, if none are appropriate please select 'Other'",
+                },
+            }
+        });*/
 });
