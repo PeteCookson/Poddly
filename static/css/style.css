@@ -41,7 +41,11 @@ a {
     border-radius: 6px;
 }
 
-.main-container
+.
+ {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
 
 /*--------------------------------------------Media Queries*/
 @media screen and (min-width: 768px) {

@@ -103,12 +103,28 @@ def logout():
     session.pop("user")
     return redirect(url_for("get_podcasts"))
 
-@app.route("/add_podcast")
+
+@app.route("/add_podcast", methods=["GET", "POST"])
 def add_podcast():
+    if request.method == "POST":
+        podcast = {
+            "category_name": request.form.get("category_name"),
+            "podcast_name": request.form.get("podcast_name"),
+            "podcast_description": request.form.get("podcast_description"),
+            "channel": request.form.get("channel"),
+            "streaming_service": request.form.get("streaming_service"),
+            "added_by": session["user"],
+            "cover": request.form.get("cover"),
+        }
+        mongo.db.podcasts.insert_one(podcast)
+        flash("Podcast Successfully Added")
+        return redirect(url_for("get_podcasts"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     channels = mongo.db.channels.find().sort("channel", 1)
-    return render_template("add_podcast.html", categories=categories, channels=channels)
-
+    services = mongo.db.service.find().sort("streaming_service")
+    return render_template("add_podcast.html", categories=categories, 
+    channels=channels, services=services)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
