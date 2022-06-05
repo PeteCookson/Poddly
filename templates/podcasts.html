@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-
-<div row>
-    <div col class="col-md-3 ">
-        {% for podcast in podcasts %}
-        <div class="card front">
+<div class="row container">
+    {% for podcast in podcasts %}
+    <div class="card col-md-3">
+        <div class="front">
             <!-- podcast image -->
             <img src="{{ podcast.cover }}" class="card-img-top" alt="{{ podcast.podcast_name }} cover">
             <div class="card-body">
@@ -22,14 +21,17 @@
                 <li class="list-group-item">Available on {{ podcast.streaming_service }}</li>
             </ul>
         </div>
-        <div class="card back">
+        <div class="back">
             <!-- podcast descrption-->
             <p class="card-text content">{{ podcast.podcast_description }}</p>
             <!-- comments -->
-            <li class="list-group-item">"{{ podcast.comments }}"{{ podcast.comment_by }}</li>
+            <li class="list-group-item">"<em>{{ podcast.comments }}</em>"{{ podcast.comment_by }}</li>
+            <a href="" class="btn btn-primary btn-sm">Done</a>
+            <a href="" class="btn btn-primary btn-sm">Edit</a>
+
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
 
 
