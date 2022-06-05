@@ -126,6 +126,16 @@ def add_podcast():
     return render_template("add_podcast.html", categories=categories, 
     channels=channels, services=services)
 
+
+@app.route("/edit_podcast/<podcast_id>", methods=["GET", "POST"])
+def edit_podcast(podcast_id):
+    podcast = mongo.db.podcasts.find_one({"_id": ObjectId(podcast_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    channels = mongo.db.channels.find().sort("channel", 1)
+    services = mongo.db.service.find().sort("streaming_service")
+    return render_template("edit_podcast.html", podcast=podcast, categories=categories, 
+    channels=channels, services=services)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
