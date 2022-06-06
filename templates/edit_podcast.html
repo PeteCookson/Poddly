@@ -72,6 +72,24 @@
                 <button class="btn btn-primary" type="submit">Confirm Changes
                     <i class="fas fa-edit right"></i>
                 </button>
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    Delete Podcast
+                </button>
+            </div>
+        </div>
+        <!-- delete modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModal">Are you sure you want to delete the podcast from the PODDLY Directory?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url_for('delete_podcast', podcast_id=podcast._id) }}">
+                            <button type="button" class="btn btn-danger">Confirm</button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
