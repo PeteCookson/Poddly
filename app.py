@@ -119,7 +119,7 @@ def add_podcast():
         }
         mongo.db.podcasts.insert_one(podcast)
        # mongo.db.addCurrentDate.insert_one()
-        flash("Podcast Successfully Added")
+        flash("Podcast successfully added to the PODDLY Directory")
         return redirect(url_for("get_podcasts"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -151,6 +151,14 @@ def edit_podcast(podcast_id):
     services = mongo.db.service.find().sort("streaming_service")
     return render_template("edit_podcast.html", podcast=podcast, categories=categories, 
     channels=channels, services=services)
+
+
+@app.route("/delete_podcast/<podcast_id>")
+def delete_podcast(podcast_id):
+    mongo.db.podcasts.delete_one({"_id": ObjectId(podcast_id)})
+    flash("Podcast successfully deleted from the PODDLY Directory")
+    return redirect(url_for("get_podcasts"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
