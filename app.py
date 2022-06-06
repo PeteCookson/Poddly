@@ -114,9 +114,11 @@ def add_podcast():
             "channel": request.form.get("channel"),
             "streaming_service": request.form.get("streaming_service"),
             "added_by": session["user"],
-            "cover": request.form.get("cover"),
+           # "date_added":
+            "cover": request.form.get("cover")
         }
         mongo.db.podcasts.insert_one(podcast)
+       # mongo.db.addCurrentDate.insert_one()
         flash("Podcast Successfully Added")
         return redirect(url_for("get_podcasts"))
 
@@ -129,6 +131,20 @@ def add_podcast():
 
 @app.route("/edit_podcast/<podcast_id>", methods=["GET", "POST"])
 def edit_podcast(podcast_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "podcast_name": request.form.get("podcast_name"),
+            "podcast_description": request.form.get("podcast_description"),
+            "channel": request.form.get("channel"),
+            "streaming_service": request.form.get("streaming_service"),
+            "added_by": session["user"],
+            "cover": request.form.get("cover")
+        }
+        mongo.db.podcasts.update_one({"_id": ObjectId(podcast_id)}, {"$set": submit })
+        flash("Podcast Successfully Updated")
+        return redirect(url_for("get_podcasts"))
+
     podcast = mongo.db.podcasts.find_one({"_id": ObjectId(podcast_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     channels = mongo.db.channels.find().sort("channel", 1)
