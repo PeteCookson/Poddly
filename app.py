@@ -159,6 +159,10 @@ def delete_podcast(podcast_id):
     flash("Podcast successfully deleted from the PODDLY Directory")
     return redirect(url_for("get_podcasts"))
 
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

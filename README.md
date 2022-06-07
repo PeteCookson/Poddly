@@ -75,7 +75,7 @@ Below is a table to highlight the importance of potential features in the first 
 | Register/Login/Logout | 5 | 5 | In |
 | Send Messages to Admin | 5 | 5 | In |
 | Full CRUD Functionality | 5 | 5 | In |
-| Page for users to Create, Read, Update, Delete Tracks | 5 | 5 | In |
+| Page for users to Create, Read, Update, Delete Podcasts | 5 | 5 | In |
 | Search/Filter by Name/Category/Channel | 5 | 4 | In |
 | Podcast Recommendations based on the "liked" podcasts | 4 | 3 | Out |
 | Save Podcasts onto a personal listened to/want to listen list | 4 | 4 | Out |
