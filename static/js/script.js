@@ -11,6 +11,15 @@ $(document).ready(function() {
     $(document).ready(function() {
         $('[data-bs-toggle="tooltip"]').tooltip();
     });
+    // comment modal
+    $(document).ready(function() {
+        $(".comment-btn").click(function() {
+            $(".pop-outer").fadeIn("slow");
+        });
+        $(".btn-close").click(function() {
+            $(".pop-outer").fadeOut("slow");
+        });
+    });
     // validate dropdown
     /*    $("#category_name").validate({
             messages: {

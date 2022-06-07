@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<div container>
+<div class="container-fluid">
     <div class="row">
         {% for podcast in podcasts %}
-        <div class="card col-md-4" data-bs-toggle="modal" data-bs-target="#modal-{{ podcast._id }}">
+        <div class="d-flex justify-content-around col card" data-bs-toggle="modal" data-bs-target="#modal-{{ podcast._id }}">
             <div>
                 <img src="{{ podcast.cover }}" class="card-img-top" alt="{{ podcast.podcast_name }} cover">
                 <div class="card-body">
@@ -31,7 +31,9 @@
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <a href="" class=" btn btn-primary btn-sm">Add comment</a>
+                        <button class="btn btn-primary btn-sm comment-btn" data-bs-target=“#comment-Modal data-bs-toggle="modal">Add Comment</button>
+                        <!--<button class="btn btn-primary btn-sm" data-bs-target=“#commentModal data-bs-toggle="commentModal">Add Comment</button>-->
+                        <!--<a href="" class=" btn btn-primary btn-sm">Add comment</a>-->
                         {% if session.user|lower == podcast.added_by|lower %}
                         <a href="{{ url_for('edit_podcast', podcast_id=podcast._id) }}" class="btn btn-primary btn-sm">Edit</a>
                         {% endif %}
@@ -39,10 +41,36 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id=“comment-Modal” tabindex="-1" aria-labelledby="comment-Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
+        <div class="pop-outer" style="display: none;" id=“comment-Modal”>
+            <div class="container pop-inner">
+                <form>
+                    <div>
+                        <p><label for="comments"></label></p>
+                        <textarea class="form-control" id="comments" name="comments" minlength="5" maxlength="50" placeholder="Let others know what you think..."></textarea>
+                        <button class="btn btn-primary" type="submit">Submit
+                            <i class="fas fa-edit right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
     </div>
-
-
-</div>
 </div>
 {% endblock %}
