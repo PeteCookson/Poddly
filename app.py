@@ -162,7 +162,38 @@ def delete_podcast(podcast_id):
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)
+    return render_template("dashboard.html", categories=categories)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return redirect(url_for("get_categories"))
+    return render_template("add_category.html")
+
+
+@app.route("/get_channels")
+def get_channels():
+    channels = list(mongo.db.channels.find().sort("channel", 1))
+    return render_template("dashboard.html", channels=channels)
+
+
+@app.route("/add_channel", methods=["GET", "POST"])
+def add_channel():
+    if request.method == "POST":
+        channel = {
+            "channel_name": request.form.get("channel_name")
+        }
+        mongo.db.channels.insert_one(channel)
+        flash("New Channel Added")
+        return redirect(url_for("get_channels"))
+    return render_template("dashoard.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

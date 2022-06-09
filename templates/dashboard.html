@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="text-align-center">Podcast Dashboard</h3>
+<div class="container-fluid">
+    <div class="row row-cols-3">
+        {% for category in categories %}
+        <div class="">
+
+            <div class="card-body">
+                <h5 class="card-title">{{ category.category_name}}</h5>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div>
+    <h4 class="">Add Category</h4>
+    <form class="col" method="POST" action="{{ url_for('add_category') }}">
+        <!-- category name -->
+        <div class="mb-3">
+            <i class="fas fa-pencil-alt prefix"></i>
+            <label for="category_name"></label>
+            <input type="text" class="validate" id="category_name" name="category_name" minlength="3" maxlength="25" placeholder="Category Name">
+        </div>
+        <!-- submt button -->
+        <div class="row">
+            <div class="col">
+                <input class="btn btn-primary" type="submit" value="Add Category">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="input-group mb-3">
+    <select class="form-select" id="channel" name="channel" required>
+        <option value="">Select the Channel...</option>
+        {% for channel in channels %}
+        <option value="{{ channel.channel }}">{{ channel.channel }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div>
+    <h4 class="">Add Channel</h4>
+    <form class="col" method="POST" action="{{ url_for('add_channel') }}">
+        <!-- channel name -->
+        <div class="mb-3">
+            <i class="fas fa-pencil-alt prefix"></i>
+            <label for="channel_name"></label>
+            <input type="text" class="validate" id="channel_name" name="channel_name" minlength="3" maxlength="25" placeholder="Channel Name">
+        </div>
+        <!-- submt button -->
+        <div class="row">
+            <div class="col">
+                <input class="btn btn-primary" type="submit" value="Add Channel">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
