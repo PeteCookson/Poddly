@@ -58,15 +58,17 @@
         {% endfor %}
         <div class="pop-outer" style="display: none;" id=“comment-Modal”>
             <div class="container pop-inner">
-                <form>
-                    <div>
-                        <p><label for="comments"></label></p>
-                        <textarea class="form-control" id="comments" name="comments" minlength="5" maxlength="50" placeholder="Let others know what you think..."></textarea>
-                        <button class="btn btn-primary" type="submit">Submit
-                            <i class="fas fa-edit right"></i>
-                        </button>
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <p><label for="comments"></label></p>
+                            <textarea class="form-control" id="comments" name="comments" minlength="5" maxlength="50" placeholder="Let others know what you think about this podcast..."></textarea>
+                            <button class="btn btn-primary" type="submit">Submit
+                                <i class="fas fa-edit right"></i>
+                            </button>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 

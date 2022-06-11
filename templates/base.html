@@ -35,7 +35,7 @@
                         <li class="nav-item"><a href="{{ url_for('add_podcast') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend a Podcast"><i class="fa-solid fa-podcast"></i></a></li>
                         <li class="nav-item"><a href="{{ url_for('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                         {% if session.user|lower == "admin"|lower %}
-                        <li class="nav-item"><a href="{{ url_for('get_categories') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="PODDLY Dashboard"><i class="fa-solid fa-layer-group"></i></a></li>
+                        <li class="nav-item"><a href="{{ url_for('get_categories') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Admin Dashboard"><i class="fa-solid fa-layer-group"></i></a></li>
                         {% endif %}
                         {% else %}
                         <li class="nav-item"><a href="{{ url_for('login') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Log In"><i class="fa-solid fa-user"></i></a></li>

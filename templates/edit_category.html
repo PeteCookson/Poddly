@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Edit Category</h4>
+
+<div class="row">
+    <form class="col" method="POST" action="{{ url_for('edit_category', category_id=category._id) }}">
+        <!-- category name -->
+        <div class="row">
+            <div class="input-field mb-3">
+                <i class="fas fa-pencil-alt prefix"></i>
+                <input value="{{ category.category_name }}" type="text" class="validate" id="category_name" name="category_name" minlength="5" maxlength="50" required>
+                <label for="category_name">Category Name</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col">
+                <a href="{{ url_for('get_categories') }}" class="btn btn-danger">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
+                <input class="btn btn-primary" type="submit" value="Edit Category">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

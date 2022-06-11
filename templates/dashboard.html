@@ -9,7 +9,7 @@
 
             <div class="card-body">
                 <h5 class="card-title">{{ category.category_name}}</h5>
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('edit_category', category_id=category._id) }}" class="btn btn-primary">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
 
@@ -35,7 +35,7 @@
         </div>
     </form>
 </div>
-
+<!-- channel list -->
 <div class="input-group mb-3">
     <select class="form-select" id="channel" name="channel" required>
         <option value="">Select the Channel...</option>
@@ -44,11 +44,11 @@
         {% endfor %}
     </select>
 </div>
-
+<!-- add channel -->
 <div>
     <h4 class="">Add Channel</h4>
     <form class="col" method="POST" action="{{ url_for('add_channel') }}">
-        <!-- channel name -->
+
         <div class="mb-3">
             <i class="fas fa-pencil-alt prefix"></i>
             <label for="channel_name"></label>

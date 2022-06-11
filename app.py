@@ -67,10 +67,10 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
                         request.form.get("username")))
-                    return redirect(url_for(
+                return redirect(url_for(
                         "profile", username=session["user"]))
             else:
                 # invalid password match
@@ -114,7 +114,7 @@ def add_podcast():
             "channel": request.form.get("channel"),
             "streaming_service": request.form.get("streaming_service"),
             "added_by": session["user"],
-           # "date_added":
+            # "date_added":
             "cover": request.form.get("cover")
         }
         mongo.db.podcasts.insert_one(podcast)
@@ -150,7 +150,7 @@ def edit_podcast(podcast_id):
     channels = mongo.db.channels.find().sort("channel", 1)
     services = mongo.db.service.find().sort("streaming_service")
     return render_template("edit_podcast.html", podcast=podcast, categories=categories, 
-    channels=channels, services=services)
+        channels=channels, services=services)
 
 
 @app.route("/delete_podcast/<podcast_id>")
@@ -158,6 +158,7 @@ def delete_podcast(podcast_id):
     mongo.db.podcasts.delete_one({"_id": ObjectId(podcast_id)})
     flash("Podcast successfully deleted from the PODDLY Directory")
     return redirect(url_for("get_podcasts"))
+
 
 @app.route("/get_categories")
 def get_categories():
@@ -177,10 +178,23 @@ def add_category():
     return render_template("add_category.html")
 
 
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_id": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for("get_categories"))
+
+    category = mongo.db.categories.find_one({"id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
+
 @app.route("/get_channels")
-def get_channels():
-    channels = list(mongo.db.channels.find().sort("channel", 1))
-    return render_template("dashboard.html", channels=channels)
+def get_channels(channel_id):
+    channels = mongo.db.channels.find_one({"id": ObjectId(channel_id)})
+    return render_template("get_categories", channels=channels)
 
 
 @app.route("/add_channel", methods=["GET", "POST"])
