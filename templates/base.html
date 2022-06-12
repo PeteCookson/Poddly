@@ -20,8 +20,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('get_podcasts') }}"><img src="/static/img/logo.png" alt="Logo for PODDLY" style="width: 120px"></a>
-                <form class="d-flex">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <form action="{{ url_for('search') }}" method="POST" class="d-flex">
+                    <input class="validate" type="text" name="query" id="query" minlength="3" placeholder="Search" aria-label="Search" required>
+                    <label for="query"></label>
                     <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,9 +32,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a href="{{ url_for('get_podcasts') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Home"><i class="fa-solid fa-house"></i></a></li>
                         {% if session.user %}
-                        <li class="nav-item"><a href="{{ url_for('profile', username=session['user']) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Profile"><i class="fa-solid fa-user"></i></a></li>
+                        <!--<li class="nav-item"><a href="{{ url_for('profile', username=session['user']) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Profile"><i class="fa-solid fa-user"></i></a></li>-->
                         <li class="nav-item"><a href="{{ url_for('add_podcast') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend a Podcast"><i class="fa-solid fa-podcast"></i></a></li>
-                        <li class="nav-item"><a href="{{ url_for('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                        <li class="nav-item"><a href="{{ url_for('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout"><i class="fa-solid fa-user"></i></a></li>
                         {% if session.user|lower == "admin"|lower %}
                         <li class="nav-item"><a href="{{ url_for('get_categories') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Admin Dashboard"><i class="fa-solid fa-layer-group"></i></a></li>
                         {% endif %}
@@ -46,7 +47,6 @@
             </div>
         </nav>
     </header>
-
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -63,8 +63,8 @@
     <main class="container-fluid">
         {% block content %}
         {% endblock %}
-    </main>
 
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

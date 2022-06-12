@@ -2,6 +2,7 @@ import os
 from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
+from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -17,11 +18,22 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route("/")
+
+
 @app.route("/get_podcasts")
 def get_podcasts():
-    podcasts = mongo.db.podcasts.find()
+    podcasts = list(mongo.db.podcasts.find())
     return render_template("podcasts.html", podcasts=podcasts)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    podcasts = list(mongo.db.podcasts.find({"$text": {"$search": query}}))
+    return render_template("podcasts.html", podcasts=podcasts)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -68,7 +80,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(
+                flash("You have succesfully logged in as {}".format(
                         request.form.get("username")))
                 return redirect(url_for(
                         "profile", username=session["user"]))
@@ -92,7 +104,7 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return redirect(url_for("get_podcasts"))
 
     return redirect(url_for("login"))
 
@@ -182,14 +194,23 @@ def add_category():
 def edit_category(category_id):
     if request.method == "POST":
         submit = {
-            "category_id": request.form.get("category_name")
+            "category_name": request.form.get("category_name")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        mongo.db.categories.update_one(
+            {"_id": ObjectId(category_id)},{"$set": submit})
         flash("Category Successfully Updated")
         return redirect(url_for("get_categories"))
 
-    category = mongo.db.categories.find_one({"id": ObjectId(category_id)})
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
+
+
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    mongo.db.categories.delete_one({"_id": ObjectId(category_id)})
+    flash("Category Successfully Deleted")
+    return redirect(url_for("get_categories"))
+
 
 @app.route("/get_channels")
 def get_channels(channel_id):
