@@ -56,8 +56,12 @@
             <h5 class="text-center">Select all the available streaming services</h5>
             <div class="form-check">
                 {% for service in services %}
-                <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service">
+                {% if service.streaming_service == podcast.service %}
+                <option value="{{ service.streaming_service }}" selected>{{ service.streaming_service }}</option>
+                {% else %}
+                <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service" name="streaming_service">
                 <option value="">{{ service.streaming_service }}</option>
+                {% endif %}
                 {% endfor %}
                 <label class="form-check-label" for="streaming_service"></label>
             </div>

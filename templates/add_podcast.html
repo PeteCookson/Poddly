@@ -1,64 +1,67 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    <h4 class="text-center">Recommend a podcast to the Poddly Community</h4>
-    <form class="col" method="POST" action="{{ url_for('add_podcast') }}">
-        <!-- podcast name -->
-        <div class="mb-3">
-            <i class="fas fa-pencil-alt prefix"></i>
-            <label for="podcast_name"></label>
-            <input type="text" class="validate" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast Name" required>
-        </div>
-        <!-- category -->
-        <div class="input-group mb-3">
-            <i class="fas fa-folder-open prefix"></i>
-            <select class="form-select validate" id="category_name" name="category_name" required>
-                <option value="">Select the Category...</option>
-                {% for category in categories %}
-                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                {% endfor %}
-            </select>
-            <label for="category_name"></label>
-        </div>
-        <!-- description -->
-        <div class="mb-3">
-            <i class="fas fa-align-left prefix"></i>
-            <label for="podcast_description"></label>
-            <textarea type="text" class="validate" id="podcast_description" name="podcast_description" placeholder="Podcast Description"></textarea>
-        </div>
-        <!-- channel -->
-        <div class="input-group mb-3">
-            <select class="form-select" id="channel" name="channel" required>
-                <option value="">Select the Channel...</option>
-                {% for channel in channels %}
-                <option value="{{ channel.channel }}">{{ channel.channel }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <!-- cover -->
-        <div>
-            <i class="fa-solid fa-code"></i>
-            <label for="cover"></label>
-            <input type="text" class="validate" id="cover" name="cover" placeholder="Paste the HTML link to the cover art" required>
-        </div>
-        <!-- services -->
-        <div>
-            <h5 class="text-center">Select all the available streaming services</h5>
-            <div class="form-check">
-                {% for service in services %}
-                <input type="checkbox" id="streaming_service" value="{{ service.streaming_service }}" class="form-check-input">
-                <option>{{ service.streaming_service }}</option>
-                {% endfor %}
-                <label class="form-check-label" for="streaming_service"></label>
+<div class="container mt-3">
+    <div class="col">
+        <h4 class="text-center">Recommend a podcast to the Poddly Community</h4>
+        <form class="col" method="POST" action="{{ url_for('add_podcast') }}">
+            <!-- podcast name -->
+            <div class="mb-3">
+                <i class="fas fa-pencil-alt prefix"></i>
+                <label for="podcast_name"></label>
+                <input type="text" class="validate text-input" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast Name" required>
             </div>
-        </div>
+            <!-- category -->
+            <div class="input-group mb-3">
+                <i class="fas fa-folder-open prefix"></i>
+                <select class="form-select validate" id="category_name" name="category_name" required>
+                    <option value="">Select the Category...</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name"></label>
+            </div>
+            <!-- description -->
+            <div class="mb-3">
+                <i class="fas fa-align-left prefix"></i>
+                <label for="podcast_description"></label>
+                <textarea type="text" class="validate text-input" id="podcast_description" name="podcast_description" placeholder="Podcast Description"></textarea>
+            </div>
+            <!-- channel -->
+            <div class="input-group mb-3">
+                <i class="fa-solid fa-headphones"></i>
+                <select class="form-select" id="channel" name="channel" required>
+                    <option value="">Select the Channel...</option>
+                    {% for channel in channels %}
+                    <option value="{{ channel.channel }}">{{ channel.channel }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- cover -->
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <label for="cover"></label>
+                <input type="text" class="validate text-input" id="cover" name="cover" placeholder="Paste the HTML link to the cover art" required>
+            </div>
+            <!-- services -->
+            <div>
+                <h5 class="text-center">Select all the available streaming services</h5>
+                <div class="form-check">
+                    {% for service in services %}
+                    <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service" name="streaming_service">
+                    <option value="">{{ service.streaming_service }}</option>
+                    {% endfor %}
+                    <label class="form-check-label" for="streaming_service"></label>
+                </div>
+            </div>
 
-        <!-- submt button -->
-        <div class="row">
-            <div class="col">
-                <input class="btn btn-primary" type="submit" value="Add Podcast">
+            <!-- submt button -->
+            <div class="row">
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" value="Add Podcast">
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}

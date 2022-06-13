@@ -44,31 +44,22 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id=“comment-Modal” tabindex="-1" aria-labelledby="comment-Modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    </div>
-                    <div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         {% endfor %}
         <div class="pop-outer" style="display: none;" id=“comment-Modal”>
             <div class="container pop-inner">
                 <div class="row">
                     <div class="col">
-                        <form>
-                            <p><label for="comments"></label></p>
-                            <textarea class="form-control" id="comments" name="comments" minlength="5" maxlength="50" placeholder="Let others know what you think about this podcast..."></textarea>
-                            <button class="btn btn-primary" type="submit">Submit
-                                <i class="fas fa-edit right"></i>
-                            </button>
+                        <form method="POST" action="{{ url_for('add_comment') }}">
+                            <div>
+                                <textarea type="text" class="validate" value="comments" id="comments" name="comments" placeholder="Let others know what you think about this podcast..."></textarea>
+                                <button class="btn btn-primary" type="submit">Submit
+                                    <i class="fas fa-edit right"></i>
+                                </button>
+                                <a href="{{ url_for('get_podcasts') }}" class="btn btn-danger">
+                                    Cancel <i class="fas fa-times-circle right"></i>
+                                </a>
+                                <label for="comments"></label>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -35,11 +35,25 @@ a {
     border-radius: 6px;
 }
 
+.btn-primary {
+    background-color: #b5838d;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #ffb482;
+}
+
 .submit-btn {
     background-color: white;
     color: rgb(0, 0, 0);
     border-color: black;
     border-radius: 6px;
+}
+
+.fas {
+    color: #6d6875;
 }
 
 .card {
@@ -49,6 +63,13 @@ a {
     padding: 0;
     box-shadow: 4px 4px 20px;
     transition: .5s;
+}
+
+.text-input {
+    border-color: #6d6875;
+    width: 50%;
+    border-width: 1px;
+    margin-left: 10px;
 }
 
 .card:hover {

@@ -24,7 +24,7 @@
         <div class="mb-3">
             <i class="fas fa-pencil-alt prefix"></i>
             <label for="category_name"></label>
-            <input type="text" class="validate" id="category_name" name="category_name" minlength="3" maxlength="25" placeholder="Category Name">
+            <input type="text" class="validate" id="category_name" name="category_name" minlength="3" maxlength="25" placeholder="Category Name" required>
         </div>
         <!-- submit button -->
         <div class="row">
@@ -35,13 +35,18 @@
     </form>
 </div>
 <!-- channel list -->
-<div class="input-group mb-3">
-    <select class="form-select" id="channel" name="channel" required>
-        <option value="">Select the Channel...</option>
+<div class="container-fluid">
+    <div class="row row-cols-3">
         {% for channel in channels %}
-        <option value="{{ channel.channel }}">{{ channel.channel }}</option>
+        <div>
+            <div class="card-body">
+                <h5 class="card-title">{{ channel.channel }}</h5>
+                <a href="" class="btn btn-primary">Edit</a>
+                <a href="" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
         {% endfor %}
-    </select>
+    </div>
 </div>
 <!-- add channel -->
 <div>
@@ -50,13 +55,39 @@
 
         <div class="mb-3">
             <i class="fas fa-pencil-alt prefix"></i>
-            <label for="channel_name"></label>
-            <input type="text" class="validate" id="channel_name" name="channel_name" minlength="3" maxlength="25" placeholder="Channel Name">
+            <label for="channel"></label>
+            <input type="text" class="validate" id="channel" name="channel" minlength="3" maxlength="25" placeholder="Channel Name">
         </div>
         <!-- submt button -->
         <div class="row">
             <div class="col">
                 <input class="btn btn-primary" type="submit" value="Add Channel">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row row-cols-3">
+    {% for service in services %}
+    <h5 class="card-title">{{ service.streaming_service }}</h5>
+    <a href="" class="btn btn-primary">Edit</a>
+    <a href="" class="btn btn-danger">Delete</a>
+    {% endfor %}
+</div>
+
+<div>
+    <h4 class="">Add Streaming Service</h4>
+    <form class="col" method="POST" action="{{ url_for('add_service') }}">
+        <!-- category name -->
+        <div class="mb-3">
+            <i class="fas fa-pencil-alt prefix"></i>
+            <label for="streaming_service"></label>
+            <input type="text" class="validate" id="streaming_service" name="streaming_service" minlength="3" maxlength="25" placeholder="Streaming Service" required>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col">
+                <input class="btn btn-primary" type="submit" value="Add Service">
             </div>
         </div>
     </form>
