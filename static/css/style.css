@@ -12,10 +12,33 @@ a {
     text-decoration: none;
 }
 
-.nav-item {
-    padding-left: 2rem;
+h5,
+h4 {
+    font-weight: 300;
+    text-align: center;
+    margin-top: 3;
 }
 
+/*----------------------Navbar */
+
+.navbar {
+    background-color: #ffcdb2;
+}
+
+.navbar-toggler {
+    color: #6d6875;
+}
+
+.nav-item {
+    padding-left: 2rem;
+
+}
+
+.fa-solid:hover {
+    color: #FFFFFF;
+}
+
+/*----------------------Alert box */
 
 .flashes h4 {
     line-height: 2;
@@ -24,21 +47,26 @@ a {
 .alert {
     text-align: center;
     font-size: 1.4rem;
+    font-weight: 300;
     position: fixed;
-    top: 75px;
+    top: 85px;
     left: 25%;
     width: 50%;
-    z-index: 7000;
-    color: rgb(6, 6, 6);
-    background-color: white;
+    z-index: 1000;
+    color: #FFFFFF;
+    background-color: #d7d7d7;
     border: none;
-    border-radius: 6px;
+    border-radius: 33px;
 }
 
+/*----------------------Buttons */
+
 .btn-primary {
-    background-color: #b5838d;
+    background-color: #6d687592;
     color: white;
     border: none;
+    border-radius: 10px;
+    font-weight: 300;
 }
 
 .btn-primary:hover {
@@ -52,12 +80,18 @@ a {
     border-radius: 6px;
 }
 
-.fas {
+.fas,
+.fa-magnifying-glass {
+    display: flex;
+    align-items: center;
     color: #6d6875;
 }
 
+/*----------------Cards*/
+
 .card {
     min-width: 200px;
+    max-width: 400px;
     border-radius: 10px;
     margin: 20px;
     padding: 0;
@@ -65,16 +99,42 @@ a {
     transition: .5s;
 }
 
-.text-input {
+/*----------------Input*/
+
+.add-podcast {
+    width: 100%;
+}
+
+.input-field {
+    width: 80%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+.form-select {
+    width: 80%
+}
+
+. text-input {
     border-color: #6d6875;
-    width: 50%;
     border-width: 1px;
-    margin-left: 10px;
+    /*display: flex;
+    border: #6d6875;
+    width: 100%;
+    
+    margin-left: 10px;*/
 }
 
 .card:hover {
     transform: scale(1.1);
 }
+
+.input-group-text {
+    background-color: #e5989b;
+}
+
+/*----------------Comment modal*/
 
 .pop-outer {
     background-color: rgba(0, 0, 0, 0.5);
@@ -94,10 +154,24 @@ a {
     margin: 5% auto;
 }
 
-/*--------------------------------------------Media Queries*/
+/*----------------------Footer*/
+
+footer {
+    background-color: #d7d7d7;
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.fa-github {
+    color: #FFFFFF;
+}
+
+/*----------------------Media Queries*/
 @media screen and (min-width: 768px) {
 
     .log-card {
         width: 50%;
     }
+
 }

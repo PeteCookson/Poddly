@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     {% block styles %}
     {% endblock %}
     <title>Poddly</title>
@@ -17,33 +20,32 @@
 
     <header>
         <!-- top navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('get_podcasts') }}"><img src="/static/img/logo.png" alt="Logo for PODDLY" style="width: 120px"></a>
+                <a class="navbar-brand" href="{{ url_for('get_podcasts') }}"><img src="/static/img/logo.png" alt="Logo for PODDLY" style="width: 180px"></a>
                 <form action="{{ url_for('search') }}" method="POST" class="d-flex">
-                    <input class="validate" type="text" name="query" id="query" minlength="3" placeholder="Search" aria-label="Search" required>
+                    <input class="input-field validate" type="text" name="query" id="query" minlength="3" placeholder="Search" aria-label="Search" required>
                     <label for="query"></label>
                     <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarToggler">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a href="{{ url_for('get_podcasts') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Home"><i class="fa-solid fa-house"></i></a></li>
-                        {% if session.user %}
-                        <!--<li class="nav-item"><a href="{{ url_for('profile', username=session['user']) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Profile"><i class="fa-solid fa-user"></i></a></li>-->
-                        <li class="nav-item"><a href="{{ url_for('add_podcast') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend a Podcast"><i class="fa-solid fa-podcast"></i></a></li>
-                        <li class="nav-item"><a href="{{ url_for('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout"><i class="fa-solid fa-user"></i></a></li>
-                        {% if session.user|lower == "admin"|lower %}
-                        <li class="nav-item"><a href="{{ url_for('get_categories') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Admin Dashboard"><i class="fa-solid fa-layer-group"></i></a></li>
-                        {% endif %}
-                        {% else %}
-                        <li class="nav-item"><a href="{{ url_for('login') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Log In"><i class="fa-solid fa-user"></i></a></li>
-                        <li class="nav-item"><a href="{{ url_for('register') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Register">Register</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
+                <div class="collapse navbar-collapse" id="navbarToggler">-->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="{{ url_for('get_podcasts') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Home"><i class="fa-solid fa-house"></i></a></li>
+                    {% if session.user %}
+                    <li class="nav-item"><a href="{{ url_for('add_podcast') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend a Podcast"><i class="fa-solid fa-podcast"></i></a></li>
+                    <li class="nav-item"><a href="{{ url_for('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout"><i class="fa-solid fa-user"></i></a></li>
+                    {% if session.user|lower == "admin"|lower %}
+                    <li class="nav-item"><a href="{{ url_for('get_categories') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Admin Dashboard"><i class="fa-solid fa-layer-group"></i></a></li>
+                    {% endif %}
+                    {% else %}
+                    <li class="nav-item"><a href="{{ url_for('login') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Log In"><i class="fa-solid fa-user"></i></a></li>
+                    <li class="nav-item"><a href="{{ url_for('register') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Register">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
             </div>
         </nav>
     </header>
@@ -60,21 +62,25 @@
         {% endwith %}
     </section>
 
-    <main class="container-fluid">
+    <main class="container-fluid align-items-center">
         {% block content %}
         {% endblock %}
 
     </main>
-    <footer class="container">
-        <div class="row">
-            <div class="contact-info-email col-6">
-                <button id="contactBtn" aria-label="Contact"><i class="fas fa-solid fa-envelope" aria-hidden="true"></i></button>
-            </div>
+    {% block footer %}
+    <footer class="">
+        <div class="container d-flex justify-content-center py-5">
+            <div class="text-center ">
+                Copyright PODDLY</div>
             <div class="contact-info-github col-6">
                 <a href="https://github.com/PeteCookson" aria-label="Github" target="_blank"><i class="fab fa-brands fa-github"></i></a>
             </div>
         </div>
+
+        <!-- Copyright -->
+
     </footer>
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

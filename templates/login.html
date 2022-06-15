@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="log-card mb-3 text-center">
-    <div class="card-panel mb-3">
+
+<div class="mt-3 text-center">
+    <div class=" mb-3">
         <form class="col" method="POST" action="{{ url_for('login') }}">
             <!-- username -->
-            <div class="row mb-3">
+            <div class="row m-3">
                 <div class="col">
                     <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" placeholder="Username" required>
                     <label for="username"></label>

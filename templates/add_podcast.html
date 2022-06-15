@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-3">
-    <div class="col">
+<div class="container mt-5">
+    <div class="row add-podcast">
         <h4 class="text-center">Recommend a podcast to the Poddly Community</h4>
-        <form class="col" method="POST" action="{{ url_for('add_podcast') }}">
+        <form class="col-6 align-self-center px-0" method="POST" action="{{ url_for('add_podcast') }}">
             <!-- podcast name -->
-            <div class="mb-3">
-                <i class="fas fa-pencil-alt prefix"></i>
-                <label for="podcast_name"></label>
-                <input type="text" class="validate text-input" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast Name" required>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-pencil-alt prefix"></i></span>
+                <input type="text" class="validate text-input" id="podcast_name" name="podcast_name" placeholder="Podcast Name" aria-label="Podcast Name" aria-describedby="Podcast Name" minlength="5" maxlength="50" required>
             </div>
             <!-- category -->
             <div class="input-group mb-3">
-                <i class="fas fa-folder-open prefix"></i>
+                <label class="input-group-text" for="category_name"><i class="fas fa-folder-open prefix"></i></label>
                 <select class="form-select validate" id="category_name" name="category_name" required>
-                    <option value="">Select the Category...</option>
+                    <option value=""><i class="fas fa-folder-open prefix"></i>Select the Category...</option>
                     {% for category in categories %}
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                     {% endfor %}
@@ -22,14 +21,14 @@
                 <label for="category_name"></label>
             </div>
             <!-- description -->
-            <div class="mb-3">
-                <i class="fas fa-align-left prefix"></i>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="podcast_description"><i class="fas fa-align-left prefix"></i></span>
+                <textarea type="text" class="validate text-input" id="podcast_description" name="podcast_description" placeholder="Podcast Description" aria-label="Podcast Description" aria-describedby="Podcast Description" maxlength="500"></textarea>
                 <label for="podcast_description"></label>
-                <textarea type="text" class="validate text-input" id="podcast_description" name="podcast_description" placeholder="Podcast Description"></textarea>
             </div>
             <!-- channel -->
             <div class="input-group mb-3">
-                <i class="fa-solid fa-headphones"></i>
+                <label class="input-group-text" for="channel"><i class="fas fa-headphones"></i></label>
                 <select class="form-select" id="channel" name="channel" required>
                     <option value="">Select the Channel...</option>
                     {% for channel in channels %}
@@ -38,14 +37,14 @@
                 </select>
             </div>
             <!-- cover -->
-            <div>
-                <i class="fa-solid fa-code"></i>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="cover"><i class="fas fa-code"></i></span>
+                <input type="text" class="validate text-input" name="cover" placeholder="Paste the HTML image address" required>
                 <label for="cover"></label>
-                <input type="text" class="validate text-input" id="cover" name="cover" placeholder="Paste the HTML link to the cover art" required>
             </div>
             <!-- services -->
             <div>
-                <h5 class="text-center">Select all the available streaming services</h5>
+                <h5 class="text-center mt-3">Select all the available streaming services</h5>
                 <div class="form-check">
                     {% for service in services %}
                     <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service" name="streaming_service">

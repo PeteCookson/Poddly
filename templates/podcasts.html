@@ -4,7 +4,7 @@
 {% if podcasts|length > 0 %}
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row mt-5">
         {% for podcast in podcasts %}
         <div class="d-flex justify-content-around col card" data-bs-toggle="modal" data-bs-target="#modal-{{ podcast._id }}">
             <div>
@@ -29,14 +29,14 @@
                     <div class="modal-body">
                         <p class="card-text content">{{ podcast.podcast_description }}</p>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Added by <em>{{ podcast.added_by }}</em> on {{ podcast.date_added }}</li>
+                            <li class="list-group-item">Added by <em>{{ podcast.added_by }}</em> on {{ podcast.added_on }}</li>
                             <li class="list-group-item">"<em>{{ podcast.comments }}</em>"{{ podcast.comment_by }}</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
+                        {% if session.user %}
                         <button class="btn btn-primary btn-sm comment-btn" data-bs-target=“#comment-Modal data-bs-toggle="modal">Add Comment</button>
-                        <!--<button class="btn btn-primary btn-sm" data-bs-target=“#commentModal data-bs-toggle="commentModal">Add Comment</button>-->
-                        <!--<a href="" class=" btn btn-primary btn-sm">Add comment</a>-->
+                        {% endif %}
                         {% if session.user|lower == podcast.added_by|lower %}
                         <a href="{{ url_for('edit_podcast', podcast_id=podcast._id) }}" class="btn btn-primary btn-sm">Edit</a>
                         {% endif %}
@@ -47,21 +47,21 @@
         {% endfor %}
         <div class="pop-outer" style="display: none;" id=“comment-Modal”>
             <div class="container pop-inner">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col">
                         <form method="POST" action="{{ url_for('add_comment') }}">
-                            <div>
-                                <textarea type="text" class="validate" value="comments" id="comments" name="comments" placeholder="Let others know what you think about this podcast..."></textarea>
-                                <button class="btn btn-primary" type="submit">Submit
-                                    <i class="fas fa-edit right"></i>
-                                </button>
-                                <a href="{{ url_for('get_podcasts') }}" class="btn btn-danger">
-                                    Cancel <i class="fas fa-times-circle right"></i>
-                                </a>
-                                <label for="comments"></label>
-                            </div>
+                            <textarea type="text" class="validate text-input" value="comments" id="comments" name="comments" placeholder="Let others know what you think about this podcast..."></textarea>
+                            <label for="comments"></label>
                         </form>
                     </div>
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Submit</i>
+                        </button>
+                        <a href="{{ url_for('get_podcasts') }}" class="btn btn-danger">
+                            Cancel</i>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
