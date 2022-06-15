@@ -6,7 +6,7 @@ from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import date
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -127,15 +127,13 @@ def add_podcast():
             "channel": request.form.get("channel"),
             "streaming_service": request.form.get("streaming_service"),
             "added_by": session["user"],
-            #"date_added": datetime.now(),
+            "added_on": datetime.now().strftime("%d %b, %Y"),
             "cover": request.form.get("cover")
         }
         mongo.db.podcasts.insert_one(podcast)
-       # mongo.db.addCurrentDate.insert_one()
         flash("Podcast successfully added to the PODDLY Directory")
         return redirect(url_for("get_podcasts"))
 
-    #date_time = now.strftime("%d/%m/%Y, %H:%M:%S")
     categories = mongo.db.categories.find().sort("category_name", 1)
     channels = mongo.db.channels.find().sort("channel", 1)
     services = mongo.db.service.find().sort("streaming_service")
@@ -204,16 +202,6 @@ def add_channel():
     return render_template("dashboard.html")
 
 
-@app.route("/add_comment", methods=["GET", "POST"])
-def add_comment():
-    if request.method == "POST":
-        comments = {
-            "comments": request.form.get("comments")
-        }
-        mongo.db.podcasts.insert_one(comments)
-        flash("New Comment Added")
-        return redirect(url_for("get_categories"))
-    return render_template("podcasts.html")
 
 @app.route("/add_service", methods=["GET", "POST"])
 def add_service():
@@ -225,6 +213,7 @@ def add_service():
         flash("New Streaming Service Added")
         return redirect(url_for("get_categories"))
     return render_template("dashboard.html")
+
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
@@ -240,6 +229,11 @@ def edit_category(category_id):
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
+@app.route("/add_comment", methods=["POST"])
+def add_comment(comments):
+    mongo.db.podcasts.update_one({"_id": ObjectId(category_id)})
+    flash("New Comment Added")
+    return redirect(url_for("get_podcasts"))
 
 
 @app.route("/delete_category/<category_id>")
