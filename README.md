@@ -6,7 +6,7 @@ This website is designed and created for the Data Centric Development Milestone 
 
 Poddly - The Community Podcast Directory is a free to use online podcast sharing platform, where podcast lovers from around the world can share their favourites, and expand their own library of podcasts with new discoveries shared by the Poddly Community Directory.
 
-The platform will allow users to browse a complete directory of shared podcasts, search by Category, Channels or Name, leave comments, and even give podcasts a thumbs up.
+The platform will allow users to browse a complete directory of shared podcasts, search, leave comments, and even recommend their own favorite podcasts.
 
 ## **Table of Contents**
 
@@ -33,10 +33,10 @@ The platform will allow users to browse a complete directory of shared podcasts,
 ## **UX** 
 ## **Strategy**
 --- 
-The main aim of the website is to provide a free-to-use podcast resource, which allows the **user** to add podcast suggestions to the site so it can be viewed by other **users**, browse and search for new podcasts, amend and delete their own suggestions and comments. Information presented is clear, intuitive, easy to use.
+The main aim of the website is to provide a free-to-use podcast resource, which allows the **user** to add podcast suggestions to the site so it can be viewed by other **users**, browse and search for new podcasts, amend and delete their own suggestions. Information presented is clear, intuitive, easy to use.
 
-- To allow the growth of a recipe database for the **user** and by the **user**.
-- To allow the **site owner** to encourage the **user** to purchase the cookbooks highlighted on the Bookshop page by directing them to the appropriate Amazon site.
+- To allow the growth of a podcast database for the **user** and by the **user**.
+- To allow the **site owner** to encourage the **user** to engage in recomemnding podcasts and leaving comments and feedback on other users recommended podcasts.
 #### **Site Owner Goals**
 1. To create an easy to use platform that is intuitive in design, responsive and easy to navigate.
 2. Implement CRUD (Create, Read, Update, Delete) functionality, allowing users to add, edit and delete their podcast recommendations.
@@ -45,18 +45,17 @@ The main aim of the website is to provide a free-to-use podcast resource, which 
 
 #### **External User Goals**
 First Time User - As a casual/first time user who has not created an account, I want to be able to:
-- Search for specific podcasts or browse categories and channels
-- View podacast reviews including comments and ratings
-- Be able to contact for more information and queries
-- Create an account
+- Search for specific podcasts or keyword
+- View podacast descriptions including other users comments
+- Register and create an account
 
 #### **Returning User Goals**
 Registered User - As a user who has registered and signed in, I want to be able to:
 - Do everything a Causal User can
 - Add, edit and delete my own podcast suggestions
-- Comment and rate other users suggestions
-- Edit my account information
-- Delete my account
+- Comment on other users suggestions
+- Edit my podcast information
+- Delete my podcasts
 
 Admin - As an administrator, I want to be able to:
 - Have the ability to maintain the website and the content on it
@@ -73,48 +72,43 @@ Below is a table to highlight the importance of potential features in the first 
 | --- | --- | --- | --- |
 | Home Page, displaying all Podcasts | 5 | 5 | In | 
 | Register/Login/Logout | 5 | 5 | In |
-| Send Messages to Admin | 5 | 5 | In |
+| Send Messages to Admin | 3 | 5 | Out |
 | Full CRUD Functionality | 5 | 5 | In |
 | Page for users to Create, Read, Update, Delete Podcasts | 5 | 5 | In |
-| Search/Filter by Name/Category/Channel | 5 | 4 | In |
+| Search by keyword | 5 | 4 | In |
 | Podcast Recommendations based on the "liked" podcasts | 4 | 3 | Out |
 | Save Podcasts onto a personal listened to/want to listen list | 4 | 4 | Out |
-| Add/Edit/Delete Comments | 5 | 4 | In |
+| Add Comments | 5 | 4 | In |
 | Links to Socials | 3 | 5 | In |
-| 'Like' Button for Podcasts | 4 | 4 | In |
+| 'Like' Button for Podcasts | 4 | 3 | Out |
 | Upload and display user profile picture | 3 | 3 | Out |
-| Edit Profile Page | 5 | 5 | In |
+| Edit Profile Page | 4 | 3 | Out |
 | Play selected podcast directly from website | 4 | 1 | Out |
 | Display users Apple Podcasts/Spotify playlist | 3 | 1 | Out |
 | Manage Podcast categories/channels (as Admin) | 5 | 5 | In |
-| Contact Page | 4 | 5 | In |
-| 404 Page | 5 | 5 | In |
+| Contact Page | 4 | 4 | Out |
+| 404 Page | 4 | 3 | Out |
 | Fully Responsive Website | 5 | 5 | In |
 
 In order to complete the project in time for the deployment and submission deadline, functions of less importance will not be implemented in the first release of project, below are the main features to be impletmented for the project:
 
 - Home Page displaying all podcasts
 - Ability to Register, Login and Logout
-- Contact form
 - Full CRUD Functionality to Add, Read, Edit and Delete Tracks
 - A page for users to add podcasts to the platform
 - Display more information and comments about relative podcast
 - Functionality for users to leave comments on podcast cards
-- Search/Filter functionality
-- 'Like' button, with click counter.
-- Profile Page for Users
-- Functionality for users to edit profile
-- Contact Page
-- 404 Page
+- Search functionality
 - Admin Priveleges (to manage Categories and Channels)
 
 Features for future releases:
 
+- Like counter for simple user rating
 - Podcast Recommendations based on the "liked" podcasts
+- Categorise podcasts further to include most popular, best of the year, most listened to.
 - Save Podcasts onto a personal listened to/want to listen list
 - Upload and display user profile picture
 - Play selected podcast directly from website
-- Display users Apple Podcast/Spotify playlists
 
 
 [Click here](/readme_assets/flow_%20chart.png) to view the Flow Chart
@@ -141,20 +135,14 @@ The structure of each page to be used on the website is listed below.
     - Registration Form
     - Footer
 
-4. Profile Page - Here users can display and edit their own profile for other users to view. 
-    - Navigation Bar
-    - Profile Image
-    - Details - First Name, Last Name, Age, additional 'About Me' information
-    - Personal Podcasts, a list of all podcasts added by this user
-
-5. 'Add a Podcast' Page
+4. 'Recommend a Podcast' Page
     - Navigation Bar
     - Form to add details of a Podcast
     - Footer
 
-6. Contact Page
+6. Admin Dashboard
     - Navigation Bar
-    - Contact Form
+    - Add, edit and delete functions on site wide content.
     - Footer
 
 ### **Database**
@@ -203,7 +191,7 @@ The primary languages used throughout the development of this project are:
 
 ### Front-End Libraries
 
-* [MaterializeCSS](https://materializecss.com/)
+* [Bootstrap](https://getbootstrap.com//)
 * [Google Fonts](https://fonts.google.com/)
 * [FontAwesome](https://fontawesome.com/)
 
@@ -211,8 +199,6 @@ The primary languages used throughout the development of this project are:
 
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/) - The microservice Flask framework is used to handle routing and serving of HTML pages displaying front-end content.
 * [Flask-PyMongo](https://docs.mongodb.com/drivers/pymongo/) - Flask's extension 'Flask-PyMongo' is the language used to interact between Flask and the MongoDB database. It handles the data inputted through the website's forms and sends it to the database, as well as retrieving it from the database to be served onto the client's screen.
-* [Flask Mail](https://pythonhosted.org/Flask-Mail/) - The Flask Mail module is used to provide functionality to the website's Contact form, as well as sending emails to users who may need to reset their password.
-* [Flask Paginate](https://pythonhosted.org/Flask-paginate/) - Flask Paginate is used to provide pagination to the website's 'All Tracks' section, featured in the 'Browse Tracks' page.
 * [jQuery](https://jquery.com/) - The developer used fairly heavy use of jQuery's AJAX for certain features of the website, including the 'like' buttons and search side-bar in the 'Browse Tracks' page, as well as the functionality to remove liked tracks in the 'User Profile' page.
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) - The WSGI web-application library Werkzeug was used to generate hashed passwords, therefore providing password security for the client.
 
