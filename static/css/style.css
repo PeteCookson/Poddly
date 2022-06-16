@@ -16,7 +16,7 @@ h5,
 h4 {
     font-weight: 300;
     text-align: center;
-    margin-top: 3;
+    margin-top: 30px;
 }
 
 /*----------------------Navbar */
@@ -131,14 +131,9 @@ h4 {
     width: 80%
 }
 
-. text-input {
+.text-input {
     border-color: #6d6875;
     border-width: 1px;
-    /*display: flex;
-    border: #6d6875;
-    width: 100%;
-    
-    margin-left: 10px;*/
 }
 
 .card:hover {
