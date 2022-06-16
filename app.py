@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
@@ -36,7 +36,6 @@ def search():
     return render_template("podcasts.html", podcasts=podcasts)
 
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -47,7 +46,8 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-        
+
+
         # check if email already exists in db
         existing_email = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
@@ -69,6 +69,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -79,7 +80,7 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("You have succesfully logged in as {}".format(
                         request.form.get("username")))
@@ -108,6 +109,7 @@ def profile(username):
         return redirect(url_for("get_podcasts"))
 
     return redirect(url_for("login"))
+
 
 @app.route("/logout")
 def logout():
@@ -202,7 +204,13 @@ def add_channel():
     return render_template("dashboard.html")
 
 
+@app.route("/add_comment/<podcast_id>", methods=["POST"])
+def add_comment(podcast_id):
+    mongo.db.podcasts.update_one({"_id": ObjectId(podcast_id)},{"$set": submit})
+    flash("New Comment Added")
+    return redirect(url_for("get_podcasts"))
 
+    
 @app.route("/add_service", methods=["GET", "POST"])
 def add_service():
     if request.method == "POST":
@@ -229,11 +237,7 @@ def edit_category(category_id):
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
-@app.route("/add_comment", methods=["POST"])
-def add_comment(comments):
-    mongo.db.podcasts.update_one({"_id": ObjectId(category_id)})
-    flash("New Comment Added")
-    return redirect(url_for("get_podcasts"))
+
 
 
 @app.route("/delete_category/<category_id>")

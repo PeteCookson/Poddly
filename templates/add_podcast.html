@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row add-podcast">
-        <h4 class="text-center">Recommend a podcast to the Poddly Community</h4>
+        <h3 class="text-center">Recommend a podcast to the Poddly Community</h3>
         <form class="col-6 align-self-center px-0" method="POST" action="{{ url_for('add_podcast') }}">
             <!-- podcast name -->
             <div class="input-group mb-3">
@@ -13,7 +13,7 @@
             <div class="input-group mb-3">
                 <label class="input-group-text" for="category_name"><i class="fas fa-folder-open prefix"></i></label>
                 <select class="form-select validate" id="category_name" name="category_name" required>
-                    <option value=""><i class="fas fa-folder-open prefix"></i>Select the Category...</option>
+                    <option><i class="fas fa-folder-open prefix"></i>Select the Category...</option>
                     {% for category in categories %}
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                     {% endfor %}

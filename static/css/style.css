@@ -60,12 +60,23 @@ h4 {
 }
 
 /*----------------------Buttons */
+.btn {
+    border-radius: 15px;
+    font-weight: 300;
+}
+
+.btn-cancel {
+    border-radius: 15px;
+    font-weight: 300;
+    background-color: #b5838d;
+    color: #FFFFFF;
+}
 
 .btn-primary {
     background-color: #6d6875;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-weight: 300;
 }
 
@@ -100,6 +111,10 @@ h4 {
 }
 
 /*----------------Input*/
+.text-input {
+    width: auto;
+}
+
 
 .add-podcast {
     width: 100%;

@@ -1,102 +1,100 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    <h4 class="text-center">Edit Podcast</h4>
-    <form class="col" method="POST" action="{{ url_for('edit_podcast', podcast_id=podcast._id) }}">
-        <!-- podcast name -->
-        <div class="mb-3">
-            <i class="fas fa-pencil-alt prefix"></i>
-            <label for="podcast_name"></label>
-            <input value="{{ podcast.podcast_name }}" type="text" class="validate" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast" required>
-        </div>
-        <!-- category -->
-        <div class="input-group mb-3">
-            <i class="fas fa-folder-open prefix"></i>
-            <label for="category_name"></label>
-            <select class="form-select validate" id="category_name" name="category_name" required>
-                <option value="">Select the Category...</option>
-                {% for category in categories %}
-                {% if category.category_name == podcast.category_name %}
-                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
-                {% else %}
-                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <!-- description -->
-        <div class="mb-3">
-            <i class="fas fa-align-left prefix"></i>
-            <label for="podcast_description"></label>
-            <textarea type="text" class="validate" id="podcast_description" name="podcast_description" placeholder="Podcast Description">
-            {{ podcast.podcast_description }}
-            </textarea>
-        </div>
-        <!-- channel -->
-        <div class="input-group mb-3">
-            <select class="form-select" id="channel" name="channel" required>
-                <option value="">Select the Channel...</option>
-                {% for channel in channels %}
-                {% if channel.channel == podcast.channel %}
-                <option value="{{ channel.channel }}" selected>{{ channel.channel }}</option>
-                {% else %}
-                <option value="{{ channel.channel }}">{{ channel.channel }}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <!-- cover -->
-        <div>
-            <i class="fa-solid fa-code"></i>
-            <label for="cover"></label>
-            <input value="{{ podcast.cover }}" type="text" class="validate" id="cover" name="cover" placeholder="Paste the HTML link to the cover art" required>
-        </div>
-        <!-- services -->
-        <div>
-            <h5 class="text-center">Select all the available streaming services</h5>
-            <div class="form-check">
-                {% for service in services %}
-                {% if service.streaming_service == podcast.service %}
-                <option value="{{ service.streaming_service }}" selected>{{ service.streaming_service }}</option>
-                {% else %}
-                <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service" name="streaming_service">
-                <option value="">{{ service.streaming_service }}</option>
-                {% endif %}
-                {% endfor %}
-                <label class="form-check-label" for="streaming_service"></label>
-            </div>
-        </div>
-        <!-- submt button -->
-        <div class="row">
-            <div class="col">
-                <!-- cancel button -->
-                <a href="{{ url_for('get_podcasts') }}" class="btn btn-danger">
-                    Cancel <i class="fas fa-times-circle right"></i>
-                </a>
-                <button class="btn btn-primary" type="submit">Confirm Changes
-                    <i class="fas fa-edit right"></i>
-                </button>
-                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    Delete Podcast
-                </button>
-            </div>
-        </div>
-        <!-- delete modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModal">Are you sure you want to delete the podcast from the PODDLY Directory?</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url_for('delete_podcast', podcast_id=podcast._id) }}">
-                            <button type="button" class="btn btn-danger">Confirm</button>
-                        </a>
+<div class="container mt-5">
+    <div class="row add-podcast">
+        <h3 class="text-center">Edit Podcast</h4>
+            <form class="col-6 align-self-center px-0" method="POST" action="{{ url_for('edit_podcast', podcast_id=podcast._id) }}">
+                <!-- podcast name -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-pencil-alt prefix"></i></span>
+                    <label for="podcast_name"></label>
+                    <input value="{{ podcast.podcast_name }}" type="text" class="validate" id="podcast_name" name="podcast_name" minlength="5" maxlength="50" placeholder="Podcast" required>
+                </div>
+                <!-- category -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="category_name"><i class="fas fa-folder-open prefix"></i></label>
+                    <select class="form-select validate" id="category_name" name="category_name" required>
+                        <option><i class="fas fa-folder-open prefix"></i>Select the Category...</option>
+                        {% for category in categories %}
+                        {% if category.category_name == podcast.category_name %}
+                        <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                        {% else %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- description -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="podcast_description"><i class="fas fa-align-left prefix"></i></span>
+                    <label for="podcast_description"></label>
+                    <textarea type="text" class="validate text-input" id="podcast_description" name="podcast_description" placeholder="Podcast Description" aria-label="Podcast Description" aria-describedby="Podcast Description" maxlength="500">{{ podcast.podcast_description }}</textarea>
+
+                </div>
+                <!-- channel -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="channel"><i class="fas fa-headphones"></i></label>
+                    <select class="form-select" id="channel" name="channel" required>
+                        <option value="">Select the Channel...</option>
+                        {% for channel in channels %}
+                        {% if channel.channel == podcast.channel %}
+                        <option value="{{ channel.channel }}" selected>{{ channel.channel }}</option>
+                        {% else %}
+                        <option value="{{ channel.channel }}">{{ channel.channel }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- cover -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="cover"><i class="fas fa-code"></i></span>
+                    <input value="{{ podcast.cover }}" type="text" class="validate" id="cover" name="cover" placeholder="Paste the HTML link to the cover art" required>
+                    <label for="cover"></label>
+                </div>
+                <!-- services -->
+                <div>
+                    <h5 class="text-center mt-3">Select all the available streaming services</h5>
+                    <div class="form-check">
+                        {% for service in services %}
+                        {% if service.streaming_service == podcast.service %}
+                        <option value="{{ service.streaming_service }}" selected>{{ service.streaming_service }}</option>
+                        {% else %}
+                        <input class="form-check-input" type="checkbox" value="{{ service.streaming_service }}" id="streaming_service" name="streaming_service">
+                        <option value="">{{ service.streaming_service }}</option>
+                        {% endif %}
+                        {% endfor %}
+                        <label class="form-check-label" for="streaming_service"></label>
                     </div>
                 </div>
-            </div>
-        </div>
-    </form>
+                <!-- submt button -->
+                <div class="row">
+                    <div class="col">
+                        <!-- cancel button -->
+                        <a href="{{ url_for('get_podcasts') }}" class="btn btn-cancel">
+                            Cancel</a>
+                        <button class="btn btn-primary" type="submit">Confirm Changes
+                        </button>
+                        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            Delete Podcast
+                        </button>
+                    </div>
+                </div>
+                <!-- delete modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModal">Are you sure you want to delete the podcast from the PODDLY Directory?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ url_for('delete_podcast', podcast_id=podcast._id) }}">
+                                    <button type="button" class="btn btn-danger">Confirm</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
 </div>
-
 {% endblock %}

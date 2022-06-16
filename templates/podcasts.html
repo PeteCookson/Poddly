@@ -45,21 +45,20 @@
             </div>
         </div>
         {% endfor %}
+        <!-- comment modal-->
         <div class="pop-outer" style="display: none;" id=“comment-Modal”>
             <div class="container pop-inner">
-                <div class="row align-items-center">
+                <div class="row">
                     <div class="col">
                         <form method="POST" action="{{ url_for('add_comment') }}">
                             <textarea type="text" class="validate text-input" value="comments" id="comments" name="comments" placeholder="Let others know what you think about this podcast..."></textarea>
                             <label for="comments"></label>
+                            <button class="btn btn-primary" type="submit">Submit</i>
+                            </button>
+                            <a href="{{ url_for('get_podcasts') }}" class="btn btn-cancel">
+                                Cancel</i>
+                            </a>
                         </form>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary" type="submit">Submit</i>
-                        </button>
-                        <a href="{{ url_for('get_podcasts') }}" class="btn btn-danger">
-                            Cancel</i>
-                        </a>
                     </div>
 
                 </div>
