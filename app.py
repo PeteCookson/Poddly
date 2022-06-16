@@ -202,14 +202,6 @@ def add_channel():
         flash("New Channel Added")
         return redirect(url_for("get_categories"))
     return render_template("dashboard.html")
-
-
-@app.route("/add_comment/<podcast_id>", methods=["POST"])
-def add_comment(podcast_id):
-    mongo.db.podcasts.update_one({"_id": ObjectId(podcast_id)},{"$set": submit})
-    flash("New Comment Added")
-    return redirect(url_for("get_podcasts"))
-
     
 @app.route("/add_service", methods=["GET", "POST"])
 def add_service():
