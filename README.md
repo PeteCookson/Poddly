@@ -2,6 +2,10 @@
 # **PODDLY**
 ## The Community Podcast Directory
 
+![alt text](/readme_assets/responsive_mockup.png "Responsive Mockup")
+
+**[Live Site](https://poddly.herokuapp.com/)**
+
 This website is designed and created for the Data Centric Development Milestone Project, for Code Institute's Diploma in Web Application Development.
 
 Poddly - The Community Podcast Directory is a free to use online podcast sharing platform, where podcast lovers from around the world can share their favourites, and expand their own library of podcasts with new discoveries shared by the Poddly Community Directory.
@@ -38,10 +42,10 @@ The main aim of the website is to provide a free-to-use podcast resource, which 
 - To allow the growth of a podcast database for the **user** and by the **user**.
 - To allow the **site owner** to encourage the **user** to engage in recomemnding podcasts and leaving comments and feedback on other users recommended podcasts.
 #### **Site Owner Goals**
-1. To create an easy to use platform that is intuitive in design, responsive and easy to navigate.
-2. Implement CRUD (Create, Read, Update, Delete) functionality, allowing users to add, edit and delete their podcast recommendations.
-3. Implement defensive programming using data validation and authentication
-4. Create a mobile-first design, while ensuring the website is responsive across all device sizes.
+- To create an easy to use platform that is intuitive in design, responsive and easy to navigate.
+- Implement CRUD (Create, Read, Update, Delete) functionality, allowing users to add, edit and delete their podcast recommendations.
+- Implement defensive programming using data validation and authentication
+- Create a mobile-first design, while ensuring the website is responsive across all device sizes.
 
 #### **External User Goals**
 First Time User - As a casual/first time user who has not created an account, I want to be able to:
@@ -174,6 +178,73 @@ The website uses the Google Fonts library to provide the fonts:
 
 ![Text](/readme_assets/Lato.png)
 
+---
+
+## **Database Design** ##
+
+5 collections were used for the construction of the database in MongoDB.
+The collection used the most was **podcasts** as it holds the majority of the information required to display information.
+There are associations with the following:
+
+- **categories** to **podcasts**
+    - category_name
+
+- **channels** to **podcasts**
+    - channel
+
+- **service** to **podcasts**
+    - streaming_service
+
+- **users** to **podcasts**
+    - username
+
+### Categories ###
+
+
+| Description | Collection Key | Data Type |
+| --- | --- | --- |
+| Unique ID | _id | ObjectId |
+| Name of category | category_name | string |
+
+### Podcasts ###
+
+| Description | Collection Key | Data Type |
+| --- | --- | --- |
+| Unique ID | _id | ObjectId |
+| Category of podcast | category_name | string |
+| Name of podcast | cookbook_name | string |
+| Description of podcast | podcast_description | string |
+| Which user added the recipe | added_by | string |
+| Channel produced by | channel | string |
+| Streaming service available | streaming_service | string |
+| What date was it added | added_on | string |
+| Cover art | cover | string |
+| User comments | comments | array |
+
+
+### Channel  ###
+
+| Description | Collection Key | Data Type |
+| --- | --- | --- |
+| Unique ID | _id | ObjectId |
+| Channel produced by | channel | string |
+
+### Service  ###
+
+| Description | Collection Key | Data Type |
+| --- | --- | --- |
+| Unique ID | _id | ObjectId |
+| Streaming service available | streaming_service | string |
+
+### Users ###
+
+| Desription | Collection Key | Data Type |
+| --- | --- | --- |
+| Unique ID | _id | ObjectId |
+| Username | username | string |
+| Email of user | user_email | string |
+| password | password | string |
+
 ## **Technologies Used** 
 ---
 ### Languages
@@ -205,14 +276,43 @@ The primary languages used throughout the development of this project are:
 ### Other Technologies
 
 * [Google Chrome Devtools](https://developer.chrome.com/docs/devtools/)
-* [Real Favicon Generator](https://realfavicongenerator.net/)
+* [Favicon.io](https://favicon.io//)
 * [XD](https://www.adobe.com/uk/products/xd.html/) - Wireframes were made using Adobe XD software
 * [Random Keygen](https://randomkeygen.com/)
 
 ## **Bugs & Testing**
-Bugs and Testing information can be found in the seperate [Bugs and Testing](bugs-and-testing.md) file.
+Bugs and Testing information can be found in the seperate [Bugs and Testing](/TESTING.md) file.
 ## Credits
 
 ## Deployment
 
+The site is hosted on [Heroku](https://poddly.herokuapp.com/).
+
+Deployment of the site has been achieved by the steps following below, outlined in the Code Institue Walkthorugh Project:
+
+- Create a new repository within GitHub.
+- Create a requirements.txt file by typing "pip3 freeze --local > requirements.txt" in the terminal which tells Heroku what dependencies are required.
+- Create a Procfile for Heroku by typing "echo web: python app.py > Procfile" in the terminal.
+- Push the requirements.txt and Procfile to GitHub.
+- Log in to Heroku and selected "Create New App".
+- Select the input field "App Name" and give app a unique name.
+- Select a region.
+- Click Create App.
+- Select Deploy from Heroku menu.
+- Select "GitHub" in Deployment Method.
+- Input GitHub repo name and Search.
+- Connect
+- Select Settings from the Heroku menu.
+- Select Reveal Config Vars and input relevant key/value information from env.py (IP, PORT, MONGO_URI, MONGO_DBNAME, SECRET_KEY) file making sure no quotation marks are used.
+- Select Deploy.
+- Select Enable Automatic Deployment.
+- Select Master Branch in Branch Selected.
+- Deploy Branch
+- View to launch the app.
+
 ## Acknowledgements
+
+* The Code Institute Slack community, has once again throughout this project, been a valuable resource. 
+* Stack Overflow is another constant source of helpful guidance and answers to so many questions. 
+* My mentor, Spencer Barriball, has been supportive and encouraging throughout this project. 
+* The Tutor Support on Code Institute has also been valuable resourse for this project. 
