@@ -1,5 +1,3 @@
-<span id="top"></span>
-
 Back to [README](README.md)
 
 ## Index
@@ -39,7 +37,7 @@ The main aim of the website is to provide a free-to-use podcast resource, which 
 - The search field is available to all users.
 
 **View podacast descriptions including other users comments**
-- The directory of podcasts is available to all users, as are the content modals with description, comments and additional information.
+- The directory of podcasts is available to all users, as are the content modals with description, and additional information.
 **Register and create an account**
 - This function is available to all user not registered.
 ---
@@ -52,9 +50,6 @@ The main aim of the website is to provide a free-to-use podcast resource, which 
 
 **Add, edit and delete my own podcast suggestions**
 - Recommending or "adding" a podcast to the directory is limited to registered users, podcasts that a logged in user recommends are able to be edited or deleted, but only by that specific user.
-
-**Comment on other users recommendations**
-- This function is accessed directly through the podcasts modal.
 
 **Edit my podcast information**
 - See above
@@ -110,8 +105,6 @@ Search functionality:
 - After entering a term in the search field and using the search icon or pressing Enter, the correct results are displayed from the indexed fields (podcast_name, category_name, channel).
 - If no results are found, a message to the effect appears.
 
-<span id="testing-auto"></span>
-
 ## Automated testing
 
 [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
@@ -120,7 +113,6 @@ Search functionality:
 
 [W3C - CSS](https://jigsaw.w3.org/css-validator/)
 
-[CSS Lint](http://csslint.net/)
 
 ### Browsers
 
@@ -151,5 +143,3 @@ Physical testing on:
 - Macbook Pro Retina 13'
 - Imac 27" 
 - Philips 27" desktop monitor
-
-
