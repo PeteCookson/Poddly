@@ -270,7 +270,7 @@ The primary languages used throughout the development of this project are:
 
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/) - The microservice Flask framework is used to handle routing and serving of HTML pages displaying front-end content.
 * [Flask-PyMongo](https://docs.mongodb.com/drivers/pymongo/) - Flask's extension 'Flask-PyMongo' is the language used to interact between Flask and the MongoDB database. It handles the data inputted through the website's forms and sends it to the database, as well as retrieving it from the database to be served onto the client's screen.
-* [jQuery](https://jquery.com/) - The developer used fairly heavy use of jQuery's AJAX for certain features of the website, including the 'like' buttons and search side-bar in the 'Browse Tracks' page, as well as the functionality to remove liked tracks in the 'User Profile' page.
+* [jQuery](https://jquery.com/)
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) - The WSGI web-application library Werkzeug was used to generate hashed passwords, therefore providing password security for the client.
 
 ### Other Technologies
