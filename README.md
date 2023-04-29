@@ -4,7 +4,7 @@
 
 ![alt text](/readme_assets/responsive_mockup.png "Responsive Mockup")
 
-**[Live Site](https://poddly.herokuapp.com/)**
+**[Live Site](https://poddly.onrender.com)**
 
 This website is designed and created for the Data Centric Development Milestone Project, for Code Institute's Diploma in Web Application Development.
 
@@ -286,23 +286,23 @@ Bugs and Testing information can be found in the seperate [Bugs and Testing](/TE
 
 ## Deployment
 
-The site is hosted on [Heroku](https://poddly.herokuapp.com/).
+The site is hosted on [Render](https://poddly.onrender.com).
 
 Deployment of the site has been achieved by the steps following below, outlined in the Code Institue Walkthorugh Project:
 
 - Create a new repository within GitHub.
-- Create a requirements.txt file by typing "pip3 freeze --local > requirements.txt" in the terminal which tells Heroku what dependencies are required.
-- Create a Procfile for Heroku by typing "echo web: python app.py > Procfile" in the terminal.
+- Create a requirements.txt file by typing "pip3 freeze --local > requirements.txt" in the terminal which tells Render what dependencies are required.
+- Create a Procfile for Render by typing "echo web: python app.py > Procfile" in the terminal.
 - Push the requirements.txt and Procfile to GitHub.
-- Log in to Heroku and selected "Create New App".
+- Log in to Render and selected "Create New App".
 - Select the input field "App Name" and give app a unique name.
 - Select a region.
 - Click Create App.
-- Select Deploy from Heroku menu.
+- Select Deploy from Render menu.
 - Select "GitHub" in Deployment Method.
 - Input GitHub repo name and Search.
 - Connect
-- Select Settings from the Heroku menu.
+- Select Settings from the Render menu.
 - Select Reveal Config Vars and input relevant key/value information from env.py (IP, PORT, MONGO_URI, MONGO_DBNAME, SECRET_KEY) file making sure no quotation marks are used.
 - Select Deploy.
 - Select Enable Automatic Deployment.
