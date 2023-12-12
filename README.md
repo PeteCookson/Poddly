@@ -212,7 +212,7 @@ There are associations with the following:
 | --- | --- | --- |
 | Unique ID | _id | ObjectId |
 | Category of podcast | category_name | string |
-| Name of podcast | cookbook_name | string |
+| Name of podcast | podcast_name | string |
 | Description of podcast | podcast_description | string |
 | Which user added the recipe | added_by | string |
 | Channel produced by | channel | string |
